@@ -24,3 +24,24 @@ deepl_ex-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Ignore package tarball (built via "mix hex.build").
+deepl_ex-*.tar
+
+# Ignore language server files
+.elixir_ls/
+
+# Ignore PLT files (used by Dialyzer).
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+
+# Other
+*.beam
+
+# Secrets
+/config/*.secret.exs
+.env
+
+# Editors
+/.idea/
+/.vscode/

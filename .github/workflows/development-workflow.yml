@@ -1,0 +1,76 @@
+name: development
+run-name: Development - ${{ github.event.pull_request.title || github.event.head_commit.message || github.ref }}
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  dependencies:
+    name: Install Dependencies Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/dependencies-workflow.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  linting:
+    name: Linting Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/linting-workflow.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  test:
+    name: Testing Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/unit-test-workflow.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  analysis:
+    name: Analyse Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/static-code-analysis-workflow.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
