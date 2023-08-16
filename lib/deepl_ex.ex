@@ -3,9 +3,9 @@ defmodule DeeplEx do
   Translate text using the DeepL api.
   """
 
-  alias DeeplEx.LanguageValidator
   alias DeeplEx.Configuration
   alias DeeplEx.DeepL
+  alias DeeplEx.LanguageValidator
 
   @doc """
   This function translates the given text from the given source language, to the given target language.
