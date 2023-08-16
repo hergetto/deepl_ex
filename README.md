@@ -16,8 +16,6 @@ end
 ```
 
 The docs can be found at <https://hexdocs.pm/deepl_ex>.
-
-
 ## Configuration
 
 After installing the package, you should add some variables to your config.
@@ -27,4 +25,3 @@ config :deepl_ex,
   api_key: "", # String containing your DeepL api key
   tier: :free # Can be :free or :pro
 ```
-
