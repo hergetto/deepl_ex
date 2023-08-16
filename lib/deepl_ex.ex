@@ -9,13 +9,14 @@ defmodule DeeplEx do
 
   @doc """
   This function translates the given text from the given source language, to the given target language.
+  It either returns `{:ok, translation}` or `{:error, error}`.
 
   ## Example with correct input
 
 
     ```elixir
     iex> DeeplEx.translate("Hoje vou comer.", :PT, :EN)
-    "Today I'm going to eat."
+    {:ok, "Today I'm going to eat."}
     ```
 
 
@@ -45,7 +46,7 @@ defmodule DeeplEx do
              target_language: target_language,
              text: text
            }) do
-      translation
+      {:ok, translation}
     else
       error ->
         error_response(error)
