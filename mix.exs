@@ -1,10 +1,13 @@
 defmodule DeeplEx.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+  @source_url "https://github.com/hergetto/deepl_ex"
+
   def project do
     [
       app: :deepl_ex,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -15,9 +18,13 @@ defmodule DeeplEx.MixProject do
 
       # Docs
       name: "DeepL Ex",
-      source_url: "https://github.com/hergetto/deepl_ex",
-      homepage_url: "https://github.com/hergetto/deepl_ex",
-      docs: docs()
+      source_url: @source_url,
+      homepage_url: @source_url,
+      docs: docs(),
+
+      # Hex.pm
+      description: description(),
+      package: package()
     ]
   end
 
@@ -61,10 +68,34 @@ defmodule DeeplEx.MixProject do
     ]
   end
 
+  # Specifies additional information for documentation.
   defp docs do
     [
       main: "DeeplEx",
-      extras: ["README.md"]
+      name: "DeepL Ex",
+      source_ref: "v#{@version}",
+      source_url: @source_url,
+      canonical_url: 'https://hexdocs.pm/deepl_ex',
+      extras: ["README.md", "LICENSE", "CHANGELOG.md"]
+    ]
+  end
+
+  # Specifies the description for Hex.pm.
+  defp description do
+    """
+    DeepL API wrapper for Elixir
+    """
+  end
+
+  # Specifies the package information for Hex.pm.
+  defp package do
+    [
+      organization: "hergetto",
+      licenses: ["Apache-2.0"],
+      links: %{
+        "GitHub" => @source_url
+      },
+      maintainers: ["hergetto", "Joost de Jager", "Thijs van der Heijden"]
     ]
   end
 
