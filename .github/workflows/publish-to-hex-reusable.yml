@@ -1,0 +1,58 @@
+name: publish to hex
+run-name: Publish to Hex - ${{ github.event.pull_request.title || github.event.head_commit.message || github.ref }}
+
+on:
+  workflow_call:
+    inputs:
+      elixir:
+        required: true
+        type: string
+      otp:
+        required: true
+        type: string
+      os:
+        type: string
+        default: ubuntu-latest
+      environment:
+        required: true
+        type: string
+      environment_url:
+        required: true
+        type: string
+
+jobs:
+  publish:
+    name: Publish to Hex Elixir ${{ inputs.elixir }} OTP ${{ inputs.otp }} - ${{ inputs.os }}
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.environment_url }}
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Elixir
+        uses: erlef/setup-beam@v1.16.0
+        with:
+          otp-version: ${{ inputs.otp }}
+          elixir-version: ${{ inputs.elixir }}
+
+      - name: Restore dependencies cache
+        id: mix_cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-${{ inputs.otp }}-${{ inputs.elixir }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-${{ inputs.elixir }}-${{ inputs.otp }}-mix-
+
+      - name: Fetch and compile dependencies
+        run: |
+          mix deps.get
+          mix deps.compile
+
+      - name: Publish to Hex
+        run: mix hex.publish --yes
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
