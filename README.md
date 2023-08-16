@@ -1,10 +1,10 @@
 # DeeplEx
 
-**TODO: Add description**
+DeeplEx is a package that allows the user to programmatically translate text using DeepL from their Elixir application.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+This package can be installed
 by adding `deepl_ex` to your list of dependencies in `mix.exs`:
 
 ```elixir
@@ -15,7 +15,16 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/deepl_ex>.
+The docs can be found at <https://hexdocs.pm/deepl_ex>.
+
+
+## Configuration
+
+After installing the package, you should add some variables to your config.
+
+```elixir
+config :deepl_ex,
+  api_key: "", # String containing your DeepL api key
+  tier: :free # Can be :free or :pro
+```
 
