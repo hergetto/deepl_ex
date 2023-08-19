@@ -13,19 +13,13 @@ on:
       os:
         type: string
         default: ubuntu-latest
-      environment:
-        required: true
-        type: string
-      environment_url:
-        required: true
-        type: string
 
 jobs:
   publish:
     name: Publish to Hex Elixir ${{ inputs.elixir }} OTP ${{ inputs.otp }} - ${{ inputs.os }}
     environment:
-      name: ${{ inputs.environment }}
-      url: ${{ inputs.environment_url }}
+      name: production
+      url: https://hex.pm/packages/deepl_ex
     runs-on: ${{ inputs.os }}
 
     steps:
