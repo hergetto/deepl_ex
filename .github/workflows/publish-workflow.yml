@@ -1,13 +1,10 @@
-name: main
-run-name: Main - ${{ github.event.pull_request.title || github.event.head_commit.message || github.ref }}
+name: publish
+run-name: Publish - ${{ github.event.head_commit.message || github.ref }}
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - v*
 
 jobs:
   dependencies:
@@ -68,6 +65,28 @@ jobs:
 
     needs:
       - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  publish:
+    name: Publish Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/publish-to-hex-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+      environment: production
+      environment_url: https://hex.pm/packages/deepl_ex
+
+    needs:
+      - dependencies
+      - linting
+      - test
+      - analysis
 
     strategy:
       matrix:

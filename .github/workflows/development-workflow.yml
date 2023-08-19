@@ -12,7 +12,7 @@ on:
 jobs:
   dependencies:
     name: Install Dependencies Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
-    uses: ./.github/workflows/dependencies-workflow.yml
+    uses: ./.github/workflows/dependencies-reusable.yml
     with:
       elixir: ${{ matrix.elixir }}
       otp: ${{ matrix.otp }}
@@ -26,7 +26,7 @@ jobs:
 
   linting:
     name: Linting Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
-    uses: ./.github/workflows/linting-workflow.yml
+    uses: ./.github/workflows/linting-reusable.yml
     with:
       elixir: ${{ matrix.elixir }}
       otp: ${{ matrix.otp }}
@@ -43,7 +43,7 @@ jobs:
 
   test:
     name: Testing Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
-    uses: ./.github/workflows/unit-test-workflow.yml
+    uses: ./.github/workflows/unit-test-reusable.yml
     with:
       elixir: ${{ matrix.elixir }}
       otp: ${{ matrix.otp }}
@@ -60,7 +60,7 @@ jobs:
 
   analysis:
     name: Analyse Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
-    uses: ./.github/workflows/static-code-analysis-workflow.yml
+    uses: ./.github/workflows/static-code-analysis-reusable.yml
     with:
       elixir: ${{ matrix.elixir }}
       otp: ${{ matrix.otp }}
