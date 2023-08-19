@@ -21,6 +21,8 @@ jobs:
       name: production
       url: https://hex.pm/packages/deepl_ex
     runs-on: ${{ inputs.os }}
+    env:
+      HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 
     steps:
       - uses: actions/checkout@v3
@@ -48,5 +50,3 @@ jobs:
 
       - name: Publish to Hex
         run: mix hex.publish --yes
-        env:
-          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
