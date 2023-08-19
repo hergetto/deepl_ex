@@ -79,6 +79,7 @@ jobs:
       elixir: ${{ matrix.elixir }}
       otp: ${{ matrix.otp }}
       os: ${{ matrix.os }}
+    secrets: inherit
 
     needs:
       - dependencies
