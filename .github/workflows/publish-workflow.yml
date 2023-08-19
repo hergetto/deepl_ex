@@ -1,0 +1,95 @@
+name: publish
+run-name: Publish - ${{ github.event.head_commit.message || github.ref }}
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  dependencies:
+    name: Install Dependencies Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/dependencies-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  linting:
+    name: Linting Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/linting-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  test:
+    name: Testing Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/unit-test-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  analysis:
+    name: Analyse Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/static-code-analysis-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+
+    needs:
+      - dependencies
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]
+
+  publish:
+    name: Publish Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }} - ${{ matrix.os }}
+    uses: ./.github/workflows/publish-to-hex-reusable.yml
+    with:
+      elixir: ${{ matrix.elixir }}
+      otp: ${{ matrix.otp }}
+      os: ${{ matrix.os }}
+      environment: production
+      environment_url: https://hex.pm/packages/deepl_ex
+
+    needs:
+      - dependencies
+      - linting
+      - test
+      - analysis
+
+    strategy:
+      matrix:
+        elixir: [1.14.3]
+        otp: [25.3]
+        os: [ubuntu-latest]

@@ -15,32 +15,17 @@ updates:
       - "github-actions"
     open-pull-requests-limit: 5
 
-  # - package-ecosystem: mix
-  #   directory: "/"
-  #   target-branch: "development"
-  #   schedule:
-  #     interval: "monthly"
-  #     time: "09:00"
-  #     timezone: "Europe/Amsterdam"
-  #   commit-message:
-  #     prefix: "[Chore]: "
-  #     include: "scope"
-  #   labels:
-  #     - "dependencies"
-  #     - "mix"
-  #   open-pull-requests-limit: 5
-
-  # - package-ecosystem: npm
-  #   directory: "/"
-  #   target-branch: "development"
-  #   schedule:
-  #     interval: "monthly"
-  #     time: "09:00"
-  #     timezone: "Europe/Amsterdam"
-  #   commit-message:
-  #     prefix: "[Chore]: "
-  #     include: "scope"
-  #   labels:
-  #     - "dependencies"
-  #     - "npm"
-  #   open-pull-requests-limit: 5
+  - package-ecosystem: mix
+    directory: "/"
+    target-branch: "development"
+    schedule:
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Amsterdam"
+    commit-message:
+      prefix: "[Chore]: "
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "mix"
+    open-pull-requests-limit: 5
