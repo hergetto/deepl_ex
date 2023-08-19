@@ -90,7 +90,6 @@ defmodule DeeplEx.MixProject do
   # Specifies the package information for Hex.pm.
   defp package do
     [
-      organization: "hergetto",
       licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => @source_url
