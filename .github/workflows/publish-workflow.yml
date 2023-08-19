@@ -81,6 +81,7 @@ jobs:
       os: ${{ matrix.os }}
       environment: production
       environment_url: https://hex.pm/packages/deepl_ex
+    secrets: inherit
 
     needs:
       - dependencies
