@@ -9,6 +9,4 @@ defmodule DeeplEx.Configuration do
         {:ok, api_key}
     end
   end
-
-  def tier, do: {:ok, Application.get_env(:deepl_ex, :tier, :free)}
 end
