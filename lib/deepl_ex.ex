@@ -38,7 +38,7 @@ defmodule DeeplEx do
          {:valid_target_language?, true} <-
            LanguageValidator.valid_target_language?(target_language),
          {:ok, api_key} = Configuration.api_key(),
-         tier = tier(api_key),
+         tier = Configuration.tier(api_key),
          client <- DeepL.client(api_key, tier),
          {:ok, %{body: %{"translations" => [%{"text" => translation}]}}} <-
            DeepL.translate(client, %{
@@ -50,16 +50,6 @@ defmodule DeeplEx do
     else
       error ->
         error_response(error)
-    end
-  end
-
-  defp tier(api_key) do
-    case String.ends_with?(api_key, ":fx") do
-      true ->
-        :free
-
-      _ ->
-        :pro
     end
   end
 

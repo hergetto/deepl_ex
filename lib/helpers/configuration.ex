@@ -9,4 +9,14 @@ defmodule DeeplEx.Configuration do
         {:ok, api_key}
     end
   end
+
+  def tier(api_key) do
+    case String.ends_with?(api_key, ":fx") do
+      true ->
+        :free
+
+      _ ->
+        :pro
+    end
+  end
 end
