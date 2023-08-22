@@ -53,8 +53,9 @@ defmodule DeeplEx do
     end
   end
 
-  defp error_response({error, _}) when error in [:valid_source_language?, :valid_target_language?],
-    do: {:error, :invalid_language_specification}
+  defp error_response({error, _})
+       when error in [:valid_source_language?, :valid_target_language?],
+       do: {:error, :invalid_language_specification}
 
   defp error_response(error), do: error
 end
