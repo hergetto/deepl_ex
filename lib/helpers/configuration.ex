@@ -10,5 +10,13 @@ defmodule DeeplEx.Configuration do
     end
   end
 
-  def tier, do: {:ok, Application.get_env(:deepl_ex, :tier, :free)}
+  def tier(api_key) do
+    case String.ends_with?(api_key, ":fx") do
+      true ->
+        :free
+
+      _ ->
+        :pro
+    end
+  end
 end
