@@ -10,12 +10,13 @@ by adding `deepl_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:deepl_ex, "~> 0.1.0"}
+    {:deepl_ex, "~> 0.1.1"}
   ]
 end
 ```
 
 The docs can be found at <https://hexdocs.pm/deepl_ex>.
+
 ## Configuration
 
 After installing the package, the following should be added to your config.
