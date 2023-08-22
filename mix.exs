@@ -94,7 +94,7 @@ defmodule DeeplEx.MixProject do
       links: %{
         "GitHub" => @source_url
       },
-      maintainers: ["hergetto", "Joost de Jager", "Thijs van der Heijden"]
+      maintainers: ["hergetto", "joostdejager", "thijsvdh"]
     ]
   end
 
