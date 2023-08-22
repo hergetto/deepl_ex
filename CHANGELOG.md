@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.1 (2023-08-17)
+## v0.1.1 (2023-08-22)
 
-- Automatically determine the tier based on the api key
+- Automatically determine the tier based on the api key ([#12](https://github.com/hergetto/deepl_ex/pull/12))
 
 ## v0.1.0 (2023-08-17)
 
