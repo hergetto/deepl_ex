@@ -106,7 +106,7 @@ defmodule DeeplEx.MixProject do
       {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.30.5", only: :dev, runtime: false},
       {:mix_test_watch, "~> 1.1", only: :dev, runtime: false},
-      {:excoveralls, "~> 0.17.0", only: :test, runtime: false},
+      {:excoveralls, "~> 0.18.0", only: :test, runtime: false},
       {:tesla, "~> 1.7"}
     ]
   end
