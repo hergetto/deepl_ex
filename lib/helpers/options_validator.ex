@@ -23,8 +23,6 @@ defmodule DeeplEx.OptionsValidator do
       [] -> {:valid_options?, true}
       _ -> {:valid_options?, false}
     end
-
-    {:valid_options?, true}
   end
 
   @doc false
