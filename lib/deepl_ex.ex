@@ -12,6 +12,8 @@ defmodule DeeplEx do
   This function translates the given text from the given source language, to the given target language.
   It either returns `{:ok, translation}` or `{:error, error}`.
 
+  See `DeeplEx.LanguageValidator` and `DeeplEx.OptionsValidator` for more information about the allowed values.
+
   ## Example with correct input
 
 
@@ -26,6 +28,13 @@ defmodule DeeplEx do
     ```elixir
     iex> DeeplEx.translate("Hoje vou comer.", :ZZ, :EN)
     {:error, :invalid_language_specification}
+    ```
+    
+  ## Example when using options
+
+    ```elixir
+    iex> DeeplEx.translate("Hello, how are you?", :EN, :PT_BR, %{formality: "less"})
+    {:ok, "Olá, cara, como você está?"}
     ```
   """
   def translate(
