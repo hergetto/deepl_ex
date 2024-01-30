@@ -10,7 +10,7 @@ by adding `deepl_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:deepl_ex, "~> 0.1.1"}
+    {:deepl_ex, "~> 0.2.0"}
   ]
 end
 ```
