@@ -5,15 +5,19 @@ defmodule DeeplEx.DeepL do
   def translate(client, %{
         source_language: source_language,
         target_language: target_language,
-        text: text
+        text: text,
+        options: options
       }) do
-    Tesla.post(client, "/translate", %{
-      text: [
-        text
-      ],
-      source_lang: parse_language(source_language),
-      target_lang: parse_language(target_language)
-    })
+    content =
+      Map.merge(options, %{
+        text: [
+          text
+        ],
+        source_lang: parse_language(source_language),
+        target_lang: parse_language(target_language)
+      })
+
+    Tesla.post(client, "/translate", content)
   end
 
   def client(api_key, tier) do

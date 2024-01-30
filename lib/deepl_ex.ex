@@ -6,6 +6,7 @@ defmodule DeeplEx do
   alias DeeplEx.Configuration
   alias DeeplEx.DeepL
   alias DeeplEx.LanguageValidator
+  alias DeeplEx.OptionsValidator
 
   @doc """
   This function translates the given text from the given source language, to the given target language.
@@ -30,13 +31,16 @@ defmodule DeeplEx do
   def translate(
         text,
         source_language,
-        target_language
+        target_language,
+        options \\ %{}
       )
       when is_atom(source_language) and is_atom(target_language) and is_binary(text) do
     with {:valid_source_language?, true} <-
            LanguageValidator.valid_source_language?(source_language),
          {:valid_target_language?, true} <-
            LanguageValidator.valid_target_language?(target_language),
+         {:valid_options?, true} <-
+           OptionsValidator.valid_options?(options),
          {:ok, api_key} = Configuration.api_key(),
          tier = Configuration.tier(api_key),
          client <- DeepL.client(api_key, tier),
@@ -44,10 +48,14 @@ defmodule DeeplEx do
            DeepL.translate(client, %{
              source_language: source_language,
              target_language: target_language,
-             text: text
+             text: text,
+             options: options
            }) do
       {:ok, translation}
     else
+      {:ok, %{status: 400, body: %{"message" => message}}} ->
+        {:error, message}
+
       error ->
         error_response(error)
     end
@@ -56,6 +64,10 @@ defmodule DeeplEx do
   defp error_response({error, _})
        when error in [:valid_source_language?, :valid_target_language?],
        do: {:error, :invalid_language_specification}
+
+  defp error_response({error, _})
+       when error == :valid_options?,
+       do: {:error, :invalid_options_specification}
 
   defp error_response(error), do: error
 end
