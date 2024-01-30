@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.0 (2024-01-30)
+
+- Add support to use options on translate ([#26](https://github.com/hergetto/deepl_ex/pull/26))
+
 ## v0.1.1 (2023-08-22)
 
 - Automatically determine the tier based on the api key ([#12](https://github.com/hergetto/deepl_ex/pull/12))
