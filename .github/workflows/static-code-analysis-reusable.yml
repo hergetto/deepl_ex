@@ -30,7 +30,7 @@ jobs:
 
       - name: Restore dependencies cache
         id: mix_cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             deps
@@ -39,7 +39,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ inputs.elixir }}-${{ inputs.otp }}-mix-
 
       - name: Restore PLT cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         id: plt_cache
         with:
           path: priv/plts
@@ -51,7 +51,7 @@ jobs:
         run: mix dialyzer --plt
 
       - name: Save PLT cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         id: plt_cache_save
         if: steps.plt_cache.outputs.cache-hit != 'true'
         with:
