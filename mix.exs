@@ -75,7 +75,7 @@ defmodule DeeplEx.MixProject do
       name: "DeepL Ex",
       source_ref: "v#{@version}",
       source_url: @source_url,
-      canonical_url: 'https://hexdocs.pm/deepl_ex',
+      canonical_url: ~c"https://hexdocs.pm/deepl_ex",
       extras: ["README.md", "LICENSE", "CHANGELOG.md"]
     ]
   end
@@ -94,7 +94,7 @@ defmodule DeeplEx.MixProject do
       links: %{
         "GitHub" => @source_url
       },
-      maintainers: ["hergetto", "joostdejager", "thijsvdh"]
+      maintainers: ["hergetto", "joostdejager", "dustessavdh"]
     ]
   end
 
