@@ -30,6 +30,7 @@ deepl_ex-*.tar
 
 # Ignore language server files
 .elixir_ls/
+.elixir-tools/
 
 # Ignore PLT files (used by Dialyzer).
 /priv/plts/*.plt

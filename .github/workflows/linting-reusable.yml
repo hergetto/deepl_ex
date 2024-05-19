@@ -23,14 +23,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Elixir
-        uses: erlef/setup-beam@v1.16.0
+        uses: erlef/setup-beam@v1.17.5
         with:
           otp-version: ${{ inputs.otp }}
           elixir-version: ${{ inputs.elixir }}
 
       - name: Restore dependencies cache
         id: mix_cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             deps

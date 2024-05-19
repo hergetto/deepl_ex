@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0 (2024-05-19)
+
+- Add the Arabic language as a supported language ([#48](https://github.com/hergetto/deepl_ex/pull/48))
+
 ## v0.2.0 (2024-01-30)
 
 - Add support to use options on translate ([#26](https://github.com/hergetto/deepl_ex/pull/26))

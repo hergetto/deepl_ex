@@ -1,7 +1,7 @@
 defmodule DeeplEx.MixProject do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.3.0"
   @source_url "https://github.com/hergetto/deepl_ex"
 
   def project do
@@ -75,7 +75,7 @@ defmodule DeeplEx.MixProject do
       name: "DeepL Ex",
       source_ref: "v#{@version}",
       source_url: @source_url,
-      canonical_url: 'https://hexdocs.pm/deepl_ex',
+      canonical_url: ~c"https://hexdocs.pm/deepl_ex",
       extras: ["README.md", "LICENSE", "CHANGELOG.md"]
     ]
   end
@@ -94,7 +94,7 @@ defmodule DeeplEx.MixProject do
       links: %{
         "GitHub" => @source_url
       },
-      maintainers: ["hergetto", "joostdejager", "thijsvdh"]
+      maintainers: ["hergetto", "joostdejager", "dustessavdh"]
     ]
   end
 
@@ -104,7 +104,7 @@ defmodule DeeplEx.MixProject do
       {:jason, "~> 1.2"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.31.1", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.32.2", only: :dev, runtime: false},
       {:mix_test_watch, "~> 1.1", only: :dev, runtime: false},
       {:excoveralls, "~> 0.18.0", only: :test, runtime: false},
       {:tesla, "~> 1.7"}
