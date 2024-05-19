@@ -30,7 +30,7 @@ jobs:
 
       - name: Restore dependencies cache
         id: mix_cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             deps
