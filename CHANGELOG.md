@@ -2,7 +2,7 @@
 
 ## v0.3.0 (2024-05-19)
 
-- Add the arabic language as a supported language ([#48](https://github.com/hergetto/deepl_ex/pull/48))
+- Add the Arabic language as a supported language ([#48](https://github.com/hergetto/deepl_ex/pull/48))
 
 ## v0.2.0 (2024-01-30)
 
