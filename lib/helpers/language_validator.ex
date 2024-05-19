@@ -4,6 +4,7 @@ defmodule DeeplEx.LanguageValidator do
   """
 
   @valid_source_languages [
+    :AR,
     :BG,
     :CS,
     :DA,
@@ -36,6 +37,7 @@ defmodule DeeplEx.LanguageValidator do
   ]
 
   @valid_target_languages [
+    :AR,
     :BG,
     :CS,
     :DA,
