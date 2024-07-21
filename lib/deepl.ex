@@ -13,9 +13,16 @@ defmodule DeeplEx.DeepL do
         text: [
           text
         ],
-        source_lang: parse_language(source_language),
         target_lang: parse_language(target_language)
       })
+
+    content =
+      if source_language == :DETECT do
+        # no need to set source_language, deepl will try to detect the source_language:
+        content
+      else
+        Map.merge(content, %{source_lang: parse_language(source_language)})
+      end
 
     Tesla.post(client, "/translate", content)
   end
