@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.0 (2024-08-25)
+
+- Add the Detect language as a supported language ([#61](https://github.com/hergetto/deepl_ex/pull/61))
+
 ## v0.3.0 (2024-05-19)
 
 - Add the Arabic language as a supported language ([#48](https://github.com/hergetto/deepl_ex/pull/48))
