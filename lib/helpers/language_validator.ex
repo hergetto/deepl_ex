@@ -33,7 +33,8 @@ defmodule DeeplEx.LanguageValidator do
     :SV,
     :TR,
     :UK,
-    :ZH
+    :ZH,
+    :DETECT
   ]
 
   @valid_target_languages [

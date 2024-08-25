@@ -10,7 +10,7 @@ by adding `deepl_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:deepl_ex, "~> 0.3.0"}
+    {:deepl_ex, "~> 0.4.0"}
   ]
 end
 ```
@@ -27,3 +27,16 @@ config :deepl_ex,
 ```
 
 We determine the tier based on the api key, so you don't need to specify the tier.
+
+### Example
+
+```elixir
+iex> Application.put_env(:deepl_ex, :api_key, "your_deepl_api_key_here")
+:ok
+iex> DeeplEx.translate("Hoje vou comer.", :PT, :EN)
+{:ok, "Today I'm going to eat."}
+iex> DeeplEx.translate("Hoje vou comer.", :ZZ, :EN)
+{:error, :invalid_language_specification}
+iex> DeeplEx.translate("Hoje vou comer.", :DETECT, :EN)
+{:ok, "Today I'm going to eat."}
+```

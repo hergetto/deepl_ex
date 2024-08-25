@@ -1,13 +1,15 @@
 defmodule DeeplEx.MixProject do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.4.0"
+  @description "DeepL API wrapper for Elixir"
   @source_url "https://github.com/hergetto/deepl_ex"
 
   def project do
     [
       app: :deepl_ex,
       version: @version,
+      description: @description,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -23,7 +25,6 @@ defmodule DeeplEx.MixProject do
       docs: docs(),
 
       # Hex.pm
-      description: description(),
       package: package()
     ]
   end
@@ -78,13 +79,6 @@ defmodule DeeplEx.MixProject do
       canonical_url: ~c"https://hexdocs.pm/deepl_ex",
       extras: ["README.md", "LICENSE", "CHANGELOG.md"]
     ]
-  end
-
-  # Specifies the description for Hex.pm.
-  defp description do
-    """
-    DeepL API wrapper for Elixir
-    """
   end
 
   # Specifies the package information for Hex.pm.
